@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Portfolio of Prithvi Reddy</title>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ scroll-behavior: smooth;
+ }
+
+ :root {
+ --bg: #07111f;
+ --card: rgba(16, 25, 48, 0.75);
+ --border: rgba(255,255,255,0.08);
+ --primary: #38bdf8;
+ --secondary: #8b5cf6;
+ --text: #ffffff;
+ --muted: #b6c2d9;
+ --glow: 0 0 30px rgba(56, 189, 248, 0.35);
+ }
+
+ body {
+ font-family: 'Poppins', sans-serif;
+ background:
+ radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 25%),
+ radial-gradient(circle at bottom right, rgba(139,92,246,0.2), transparent 25%),
+ var(--bg);
+ color: var(--text);
+ overflow-x: hidden;
+ min-height: 100vh;
+ }
+
+ .background-grid {
+ position: fixed;
+ inset: 0;
+ background-image:
+ linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+ background-size: 45px 45px;
+ z-index: -3;
+ animation: gridMove 5s linear infinite;
+ }
+
+ @keyframes gridMove {
+ 0% { transform: translateY(0px); }
+ 100% { transform: translateY(45px); }
+ }
+
+ .blur1,
+ .blur2 {
+ position: fixed;
+ border-radius: 50%;
+ filter: blur(90px);
+ z-index: -2;
+ opacity: 0.45;
+ animation-duration: 12s;
+ animation-iteration-count: infinite;
+ animation-timing-function: ease-in-out;
+ }
+
+ .blur1 {
+ width: 350px;
+ height: 350px;
+ background: #38bdf8;
+ top: -100px;
+ left: -100px;
+ animation-name: floatBlue;
+ }
+
+ .blur2 {
+ width: 350px;
+ height: 350px;
+ background: #8b5cf6;
+ bottom: -100px;
+ right: -100px;
+ animation-name: floatPurple;
+ }
+
+ @keyframes floatBlue {
+ 0% { transform: translate(0px, 0px); }
+ 25% { transform: translate(120px, 60px); }
+ 50% { transform: translate(40px, 160px); }
+ 75% { transform: translate(-60px, 80px); }
+ 100% { transform: translate(0px, 0px); }
+ }
+
+ @keyframes floatPurple {
+ 0% { transform: translate(0px, 0px); }
+ 25% { transform: translate(-120px, -60px); }
+ 50% { transform: translate(-40px, -160px); }
+ 75% { transform: translate(60px, -80px); }
+ 100% { transform: translate(0px, 0px); }
+ }
+
+ header {
+ width: 100%;
+ position: sticky;
+ top: 0;
+ z-index: 1000;
+ backdrop-filter: blur(20px);
+ background: rgba(6, 11, 24, 0.65);
+ border-bottom: 1px solid rgba(255,255,255,0.08);
+ }
+
+ .nav-container {
+ max-width: 1400px;
+ margin: auto;
+ padding: 18px 40px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .logo {
+ font-size: 1.5rem;
+ font-weight: 700;
+ letter-spacing: 1px;
+ }
+
+ .logo span {
+ color: var(--primary);
+ }
+
+ nav {
+ display: flex;
+ gap: 15px;
+ flex-wrap: wrap;
+ }
+
+ nav button {
+ background: rgba(255,255,255,0.05);
+ border: 1px solid rgba(255,255,255,0.08);
+ color: white;
+ padding: 12px 18px;
+ border-radius: 14px;
+ cursor: pointer;
+ font-size: 0.95rem;
+ transition: 0.3s ease;
+ font-weight: 500;
+ }
+
+ nav button:hover {
+ transform: translateY(-2px);
+ background: linear-gradient(135deg, var(--primary), var(--secondary));
+ box-shadow: var(--glow);
+ }
+
+ .page {
+ display: none;
+ min-height: calc(100vh - 90px);
+ padding: 70px 8%;
+ animation: fade 0.4s ease;
+ }
+
+ .active {
+ display: block;
+ }
+
+ @keyframes fade {
+ from { opacity: 0; transform: translateY(15px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ .hero {
+ display: grid;
+ grid-template-columns: 1.2fr 0.8fr;
+ gap: 40px;
+ align-items: center;
+ margin-top: 40px;
+ }
+
+ .hero-text h1 {
+ font-size: 4rem;
+ line-height: 1.1;
+ margin-bottom: 20px;
+ font-weight: 800;
+ }
+
+ .gradient-text {
+ background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ }
+
+ .hero-text p {
+ color: var(--muted);
+ line-height: 1.9;
+ font-size: 1.05rem;
+ max-width: 700px;
+ }
+
+ .hero-buttons {
+ display: flex;
+ gap: 20px;
+ margin-top: 35px;
+ flex-wrap: wrap;
+ }
+
+ .primary-btn,
+ .secondary-btn {
+ padding: 15px 26px;
+ border-radius: 16px;
+ border: none;
+ font-weight: 600;
+ cursor: pointer;
+ transition: 0.3s ease;
+ font-size: 1rem;
+ }
+
+ .primary-btn {
+ background: linear-gradient(135deg, var(--primary), var(--secondary));
+ color: white;
+ box-shadow: var(--glow);
+ }
+
+ .secondary-btn {
+ background: rgba(255,255,255,0.05);
+ border: 1px solid rgba(255,255,255,0.08);
+ color: white;
+ }
+
+ .primary-btn:hover,
+ .secondary-btn:hover {
+ transform: translateY(-3px) scale(1.02);
+ }
+
+ .hero-card {
+ background: var(--card);
+ border: 1px solid var(--border);
+ border-radius: 30px;
+ padding: 35px;
+ backdrop-filter: blur(18px);
+ box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+ position: relative;
+ overflow: hidden;
+ }
+
+ .hero-card::before {
+ content: '';
+ position: absolute;
+ width: 200px;
+ height: 200px;
+ background: rgba(56,189,248,0.2);
+ border-radius: 50%;
+ top: -100px;
+ right: -100px;
+ filter: blur(20px);
+ }
+
+ .profile-circle {
+ width: 180px;
+ height: 180px;
+ border-radius: 50%;
+ margin: auto;
+ background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 4rem;
+ font-weight: 700;
+ margin-bottom: 25px;
+ box-shadow: var(--glow);
+ }
+
+ .info-row {
+ display: flex;
+ justify-content: space-between;
+ margin: 18px 0;
+ border-bottom: 1px solid rgba(255,255,255,0.08);
+ padding-bottom: 12px;
+ }
+
+ .label { color: var(--muted); }
+ .value { font-weight: 600; }
+
+ .section-title {
+ font-size: 3rem;
+ margin-bottom: 15px;
+ font-weight: 800;
+ }
+
+ .section-subtitle {
+ color: var(--muted);
+ margin-bottom: 50px;
+ line-height: 1.8;
+ max-width: 800px;
+ }
+
+ .glass-card {
+ background: var(--card);
+ border: 1px solid var(--border);
+ border-radius: 28px;
+ padding: 35px;
+ backdrop-filter: blur(20px);
+ box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+ margin-bottom: 35px;
+ }
+
+ .about-layout {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 30px;
+ }
+
+ .image-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 20px;
+ }
+
+ .image-placeholder {
+ background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+ border: 1px dashed rgba(255,255,255,0.15);
+ border-radius: 24px;
+ height: 240px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ color: var(--muted);
+ text-align: center;
+ padding: 20px;
+ transition: 0.3s ease;
+ font-size: 1.3rem;
+ }
+
+ .image-placeholder:hover {
+ transform: translateY(-5px);
+ border-color: var(--primary);
+ box-shadow: var(--glow);
+ }
+
+ .about-text p {
+ color: var(--muted);
+ line-height: 2;
+ margin-bottom: 20px;
+ }
+
+ .projects-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+ gap: 30px;
+ }
+
+ .project-card {
+ background: var(--card);
+ border: 1px solid var(--border);
+ border-radius: 28px;
+ overflow: hidden;
+ transition: 0.35s ease;
+ position: relative;
+ backdrop-filter: blur(15px);
+ }
+
+ .project-card:hover {
+ transform: translateY(-10px);
+ box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+ }
+
+ .project-banner {
+ height: 220px;
+ background:
+ linear-gradient(135deg, rgba(56,189,248,0.4), rgba(139,92,246,0.4)),
+ #111827;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 1.3rem;
+ font-weight: 600;
+ color: white;
+ letter-spacing: 1px;
+ }
+
+ .project-content {
+ padding: 28px;
+ }
+
+ .project-content h3 {
+ margin-bottom: 12px;
+ font-size: 1.5rem;
+ }
+
+ .project-content p {
+ color: var(--muted);
+ line-height: 1.8;
+ margin-bottom: 20px;
+ }
+
+ .project-btn {
+ width: 100%;
+ padding: 14px;
+ border-radius: 14px;
+ border: none;
+ background: linear-gradient(135deg, var(--primary), var(--secondary));
+ color: white;
+ font-weight: 600;
+ cursor: pointer;
+ transition: 0.3s ease;
+ }
+
+ .project-btn:hover {
+ transform: scale(1.02);
+ }
+
+ .resume-download-btn {
+ display: inline-block;
+ margin-bottom: 30px;
+ padding: 15px 30px;
+ border-radius: 16px;
+ background: linear-gradient(135deg, var(--primary), var(--secondary));
+ color: white;
+ font-weight: 600;
+ font-size: 1rem;
+ text-decoration: none;
+ box-shadow: var(--glow);
+ transition: 0.3s ease;
+ font-family: 'Poppins', sans-serif;
+ }
+
+ .resume-download-btn:hover {
+ transform: translateY(-3px) scale(1.02);
+ }
+
+ footer {
+ padding: 35px;
+ text-align: center;
+ color: var(--muted);
+ border-top: 1px solid rgba(255,255,255,0.08);
+ margin-top: 60px;
+ background: rgba(255,255,255,0.02);
+ backdrop-filter: blur(10px);
+ }
+
+ @media (max-width: 1000px) {
+ .hero,
+ .about-layout {
+ grid-template-columns: 1fr;
+ }
+ .hero-text h1 { font-size: 3rem; }
+ }
+
+ @media (max-width: 700px) {
+ .nav-container {
+ flex-direction: column;
+ gap: 20px;
+ padding: 20px;
+ }
+ .hero-text h1 { font-size: 2.3rem; }
+ .section-title { font-size: 2.2rem; }
+ .image-grid { grid-template-columns: 1fr; }
+ .page { padding: 50px 6%; }
+ }
+ </style>
+</head>
+<body>
+
+ <div class="background-grid"></div>
+ <div class="blur1"></div>
+ <div class="blur2"></div>
+
+ <header>
+ <div class="nav-container">
+ <div class="logo">Prithvi<span>Reddy</span></div>
+ <nav>
+ <button onclick="showPage('home')">Home</button>
+ <button onclick="showPage('about')">About Me</button>
+ <button onclick="showPage('projects')">My Projects</button>
+ <button onclick="showPage('resume')">Resume</button>
+ </nav>
+ </div>
+ </header>
+
+ <!-- HOME PAGE -->
+ <section id="home" class="page active">
+ <div class="hero">
+ <div class="hero-text">
+ <h1>Portfolio of <span class="gradient-text">Prithvi Reddy</span></h1>
+ <p>
+ Hi, my name is Prithvi Reddy, and this is my portfolio for Computer Science Essentials.
+ I am a freshman student at Emerald High School and this portfolio is meant to show my projects and
+ achievements I have accomplished in this course.
+ </p>
+ <div class="hero-buttons">
+ <button class="primary-btn" onclick="showPage('projects')">View Projects</button>
+ <button class="secondary-btn" onclick="showPage('about')">About Me</button>
+ </div>
+ </div>
+ <div class="hero-card">
+ <div class="profile-circle">PR</div>
+ <div class="info-row">
+ <span class="label">School</span>
+ <span class="value">Emerald High</span>
+ </div>
+ <div class="info-row">
+ <span class="label">Grade</span>
+ <span class="value">9th Grade</span>
+ </div>
+ <div class="info-row">
+ <span class="label">Class</span>
+ <span class="value">Computer Science Essentials</span>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- ABOUT PAGE -->
+ <section id="about" class="page">
+ <h1 class="section-title">About Me</h1>
+ <div class="about-layout">
+ <div class="glass-card about-text">
+ <h2 style="margin-bottom: 20px;">Personal Introduction</h2>
+ <p>
+ I am a freshman student at Emerald High School.
+ I am currently in 9th grade and I am interested in becoming a software engineer, leading me to take the course, Computer Science Essentials.
+ </p>
+ </div>
+ <div class="image-grid">
+ <div class="image-placeholder">💻<br><br>Programming</div>
+ <div class="image-placeholder">⚡<br><br>Web Development</div>
+ <div class="image-placeholder">🤖<br><br>Artificial Intelligence</div>
+ <div class="image-placeholder">🧠<br><br>Problem Solving</div>
+ </div>
+ </div>
+ </section>
+
+ <!-- PROJECTS PAGE -->
+ <section id="projects" class="page">
+ <h1 class="section-title">My Projects</h1>
+ <div class="projects-grid">
+ <div class="project-card">
+ <div class="project-banner">Project Video #1</div>
+ <div class="project-content">
+ <h3>Project Placeholder</h3>
+ <p>Add your first project description here. You can also embed a Google Drive video, screenshots, or links.</p>
+ <button class="project-btn">Add Video Later</button>
+ </div>
+ </div>
+ <div class="project-card">
+ <div class="project-banner">Project Video #2</div>
+ <div class="project-content">
+ <h3>Project Placeholder</h3>
+ <button class="project-btn">Add Video Later</button>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- RESUME PAGE -->
+ <section id="resume" class="page">
+ <h1 class="section-title">Resume</h1>
+
+ <a href="resume.pdf" target="_blank" class="resume-download-btn">📄 View / Download Resume PDF</a>
+
+ <div class="glass-card">
+ <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 50px; line-height: 2; color: white;">
+ <pre style="white-space: pre-wrap; font-family: 'Poppins', sans-serif; color: white; line-height: 2; font-size: 1rem;">
+Prithvi Reddy
+Objective: To obtain a full time position at a tech company, where I can make great connections, and also be able to learn and improve my skills
+
+ㅡ
+Education
+
+Emerald High School / High School Freshman
+AUGUST 2025 - Present, Dublin, CA
+  • 4.0 GPA
+  • Advanced Algebra 2
+  • Computer Science Essentials
+  • Spanish 2
+  • Member EHS ECON and Finance club
+
+ㅡ
+Volunteer Experience
+
+Young Men Service League / Leader of Philanthropy Committee
+July 2025 - PRESENT, Livermore, CA
+  • Assisting at St. Michael's Church in Livermore
+  • Assisting at food pantries in Senior Folks homes
+  • Makes the main decisions for the Philanthropy Committee of the Service league
+  • 50 + hours of volunteer work in total
+  • Total of 9 months regularly doing volunteer work
+
+ㅡ
+Academic Awards
+
+Principal's Honor Roll Award x6
+  - every semester at Cottonwood Creek School total of 6 times, one time per each semester
+
+National Online Forensics Award
+  - for winning a tournament for Athens Debate club
+
+Science Fair Award x3
+  - won the yearly science fair a total of 3 times at CCS
+
+ㅡ
+Skills
+
+  • Spanish 2 in school      2024-26
+  • Learning Code in and out of School (PY, HTML, CSS, JS)   2025-26
+  • Can understand Tamil
+  • Skilled at AI Prompting / Prompt Engineering
+  • Skilled Impromptu Speaker/Debater   2024-25
+ </pre>
+ </div>
+ </div>
+ </section>
+
+ <footer>
+ © 2026 Portfolio of Prithvi Reddy • Emerald High School • Computer Science Essentials
+ </footer>
+
+ <script>
+ function showPage(pageId) {
+ const pages = document.querySelectorAll('.page');
+ pages.forEach(page => page.classList.remove('active'));
+ document.getElementById(pageId).classList.add('active');
+ window.scrollTo({ top: 0, behavior: 'smooth' });
+ }
+ </script>
+
+</body>
+</html>
